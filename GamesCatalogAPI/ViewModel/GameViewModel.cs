@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GamesCatalogAPI.Model;
 
-namespace GamesCatalogAPI.Model
+namespace GamesCatalogAPI.ViewModel {
+    public class GameViewModel : Base {
+        /*view model can be part of a model or 
+        for a report a view model can be compound of fields from diferent tables*/
 
-{
-    public class GameViewModel : Base
-    {        
-        public string Name { get; set; }
-        public string Producer{ get; set; }
-        public double  Price { get; set; }
+        public string Name {
+            get; set;
+        }
+        public string Producer {
+            get; set;
+        }
+        public double Price {
+            get; set;
+        }
     }
 }
