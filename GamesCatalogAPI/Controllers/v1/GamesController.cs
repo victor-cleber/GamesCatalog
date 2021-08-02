@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using GamesCatalogAPI.ViewModel;
+using GamesCatalogAPI.InputModel;
 
 
 namespace GamesCatalogAPI.Controllers.v1 {
