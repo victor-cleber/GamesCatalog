@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
+using GamesCatalogAPI.Services;
+using GamesCatalogAPI.Repositories;
+
 namespace GamesCatalogAPI {
     public class Startup {
         public Startup(IConfiguration configuration) {
@@ -17,7 +20,8 @@ namespace GamesCatalogAPI {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
-
+            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IGameRepository, GameRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GamesCatalogAPI", Version = "v1" });

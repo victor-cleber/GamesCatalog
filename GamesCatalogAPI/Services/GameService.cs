@@ -12,7 +12,6 @@ namespace GamesCatalogAPI.Services {
     public class GameService : IGameService {
         private readonly IGameRepository _gameRepository;
 
-
         public GameService(IGameRepository gameRepository) {
             _gameRepository = gameRepository;
         }
@@ -45,7 +44,8 @@ namespace GamesCatalogAPI.Services {
             };
         }
 
-        public async Task<GameViewModel> Insert(GameViewModel game) {
+        public async  Task<GameViewModel> Insert(GameInputModel game) {
+        
             var entityGame = await _gameRepository.Get(game.Name, game.Producer);
 
             if (entityGame.Count > 0)
@@ -104,9 +104,8 @@ namespace GamesCatalogAPI.Services {
             await _gameRepository.Remove(id);
         }
 
-        public async Task Dispose(Guid id) {
+        public void Dispose() {
            _gameRepository.Dispose();
-        }
-
+        }    
     }
 }

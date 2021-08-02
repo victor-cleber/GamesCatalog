@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using GamesCatalogAPI.Entities;
 
 namespace GamesCatalogAPI.Repositories {
-    public class GameRepoository : IGameRepository {
+    public class GameRepository : IGameRepository {
 
         private static Dictionary<Guid, Game> games = new Dictionary<Guid, Game>() {
 
@@ -65,7 +65,7 @@ namespace GamesCatalogAPI.Repositories {
             return Task.CompletedTask;
         }
 
-        public void Dispose(Guid id) {
+        public void Dispose() {
             //Close the database connections 
         }
     }
