@@ -7,6 +7,9 @@ using Microsoft.OpenApi.Models;
 
 using GamesCatalogAPI.Services;
 using GamesCatalogAPI.Repositories;
+using System;
+using System.Reflection;
+using System.IO;
 
 namespace GamesCatalogAPI {
     public class Startup {
@@ -25,6 +28,13 @@ namespace GamesCatalogAPI {
             services.AddControllers();
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GamesCatalogAPI", Version = "v1" });
+
+                //folder application
+                var basePah = AppDomain.CurrentDomain.BaseDirectory;
+                //Get name application
+                var fileName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name + ".xml";
+                //Indicates this file to be used by Swagger 
+                c.IncludeXmlComments(Path.Combine(basePah, fileName));
             });
         }
 
