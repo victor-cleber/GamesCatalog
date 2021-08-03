@@ -31,7 +31,6 @@ namespace GamesCatalogAPI.Repositories {
             return Task.FromResult(games[id]);
         }
 
-
         public Task<List<Game>> Get(string name, string producer) {
             
             return Task.FromResult(games.Values.Where(game => game.Name.Equals(name) && game.Producer.Equals(producer)).ToList<Game>());

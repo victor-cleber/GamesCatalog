@@ -25,7 +25,7 @@ namespace GamesCatalogAPI.Middleware {
 
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             await context.Response.WriteAsJsonAsync(new {
-                Message = "Ocorreu um erro durante a solitacao, por favor tente novamente"
+                Message = "An error occurred during the request. Please try again."
             });
         }
 

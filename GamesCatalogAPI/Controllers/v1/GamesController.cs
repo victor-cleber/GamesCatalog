@@ -14,25 +14,27 @@ namespace GamesCatalogAPI.Controllers.v1 {
     [Route("api/v1/[controller]")]
     [ApiController]
     public class GamesController : Controller {
-        //var service = new Service();
+        //var service = new Service(); without Dependency injection
 
         private readonly IGameService _gameService;
 
         public GamesController(IGameService gameService) {
             _gameService = gameService;
         }
+
         /// <summary>
         /// Get all games using pagination
         /// </summary>
         /// <remarks>
-        /// It is not possible get games without pagination
+        /// It is not possible to get games without pagination
         /// </remarks>
-        /// <param name="page">Indicates wich page is being consulted [minimum 1]</param>
-        /// <param name="quantity">Indicates the quantity of records per page. [minimum 1 - maximum 50</param>
+        /// <param name="page">Indicates which  page is being consulted [minimum 1]</param>
+        /// <param name="quantity">Indicates the number of records per page. [minimum 1 - maximum 50</param>
         /// <response code="200">Return a list of games</response>
         /// <response code="204">In case that there are no games</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GameViewModel>>> GetGames([FromQuery, Range(1, int.MaxValue)] int page = 1, [FromQuery, Range(1, 50)] int quantity = 5) {
+           
             var games = await _gameService.Get(page, quantity);
 
             if (games.Count() == 0)
@@ -97,7 +99,7 @@ namespace GamesCatalogAPI.Controllers.v1 {
         /// </summary>
         /// <param name="idGame">The identification of a game</param>
         /// <param name="price">The price of a game</param>
-        /// <response code="200">The price of a game was update</response>
+        /// <response code="200">The price of a game was updated</response>
         /// <response code="204">This game does not exist</response>
         [HttpPatch("{idGame:guid}/price/{price:double}")]
         public async Task<ActionResult> UpdatePrice([FromRoute] Guid idGame, [FromRoute] double price) {
@@ -126,6 +128,5 @@ namespace GamesCatalogAPI.Controllers.v1 {
                 return NotFound("This game does not exist.");
             }
         }
-
     }
 }
