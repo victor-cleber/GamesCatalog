@@ -12,7 +12,7 @@ namespace GamesCatalogAPI.Repositories {
 
         public GameRepositorySqlServer(IConfiguration configuration) {
 
-            sqlConnection = new SqlConnection(configuration.GetConnectionString("Default"));
+            sqlConnection = new SqlConnection(configuration.GetConnectionString("Default"));           
         }
 
         public async Task<List<Game>> Get(int page, int quantity) {

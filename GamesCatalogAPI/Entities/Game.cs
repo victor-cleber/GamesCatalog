@@ -1,10 +1,8 @@
 ﻿using System;
+using GamesCatalogAPI.Model;
 
 namespace GamesCatalogAPI.Entities {
-    public class Game {
-        public Guid Id {
-            get; set;
-        }
+    public class Game : Base{        
         public string Name {
             get; set;
         }

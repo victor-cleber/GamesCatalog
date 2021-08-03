@@ -66,7 +66,7 @@ namespace GamesCatalogAPI.Controllers.v1 {
         /// <response code="200">The game was inserted</response>
         /// <response code="204">There is already a game for this producer with this name</response>
         [HttpPost]
-        public async Task<ActionResult<GameViewModel>> InsertGame([FromBody] GameInputModel gameInputModel) {
+        public async Task<ActionResult> InsertGame([FromBody] GameInputModel gameInputModel) {
             try {
                 var game = await _gameService.Insert(gameInputModel);
                 return Ok();

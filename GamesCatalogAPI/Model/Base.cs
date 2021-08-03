@@ -2,7 +2,7 @@
 
 namespace GamesCatalogAPI.Model {
     public abstract class Base {
-        public Guid IdGame {
+        public Guid Id {
             get; set;
         }
     }

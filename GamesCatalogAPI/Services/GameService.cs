@@ -22,7 +22,7 @@ namespace GamesCatalogAPI.Services {
             //for each game, creates a gameViewModel and insert in a list
             //An other option is using Auto-Mapper library
             return games.Select(game => new GameViewModel {
-                IdGame = game.Id,
+                Id = game.Id,
                 Name = game.Name,
                 Producer = game.Producer,
                 Price = game.Price
@@ -37,7 +37,7 @@ namespace GamesCatalogAPI.Services {
                 return null;
             }
             return new GameViewModel {
-                IdGame = game.Id,
+                Id = game.Id,
                 Name = game.Name,
                 Producer = game.Producer,
                 Price = game.Price
@@ -61,7 +61,7 @@ namespace GamesCatalogAPI.Services {
             await _gameRepository.Insert(gameInsert);
 
             return new GameViewModel {
-                IdGame = gameInsert.Id,
+                Id = gameInsert.Id,
                 Name = game.Name,
                 Producer = game.Producer,
                 Price = game.Price
